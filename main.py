@@ -40,14 +40,14 @@ font_box = pygame.Surface((W - 30, font.get_height()))
 font_box_rect = font_box.get_rect(center=(W // 2, H - 30))
 
 
-def dialogs(text, pos, owl_text):
+def dialogs(text, pos, owl_pos, owl_text):
     screen.blit(dialog, pos)
     screen.blit(font2.render(text, True, BLACK), (pos[0] + 5, pos[1] + 5))
-    screen.blit(dialog, dialog_owl_pos)
+    pygame.display.update()
+    screen.blit(dialog, owl_pos)
     screen.blit(font2.render(owl_text, True, BLACK), (dialog_owl_pos[0] + 5, dialog_owl_pos[1] + 5))
     pygame.display.update()
     pygame.time.wait(2000)
-
 
 run = True
 while run:
@@ -66,3 +66,11 @@ while run:
         screen.blit(font_box, font_box_rect)
         font_box.fill(SILVER)
     pygame.display.update()
+
+    if start == 1:
+        dialogs('', OUTSIZE_BG, dialog_owl_pos, 'Я загадала число')
+        dialogs('', OUTSIZE_BG, dialog_owl_pos, 'от 0 до 100')
+        dialogs('', OUTSIZE_BG, dialog_owl_pos, 'Отгадай его')
+        dialogs('', OUTSIZE_BG, OUTSIZE_BG, '')
+        dialogs('Кот, твой ход', dialog_dog_pos, OUTSIZE_BG, '')
+        start = 0
