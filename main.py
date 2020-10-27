@@ -43,10 +43,10 @@ font_box_rect = font_box.get_rect(center=(W // 2, H - 30))
 def dialogs(text, pos, owl_pos, owl_text):
     screen.blit(dialog, pos)
     screen.blit(font2.render(text, True, BLACK), (pos[0] + 5, pos[1] + 5))
-    pygame.display.update()
+
     screen.blit(dialog, owl_pos)
     screen.blit(font2.render(owl_text, True, BLACK),
-                (dialog_owl_pos[0] + 5, dialog_owl_pos[1] + 5))
+                (owl_pos[0] + 5, owl_pos[1] + 5))
     pygame.display.update()
     pygame.time.wait(1000)
 
@@ -87,7 +87,7 @@ while run:
                                 dialog_owl_pos, 'Продолжаем')
                         block = 1
                 numeral = ''
-                move == 1
+                move += 1
                 if move > 2:
                     move = 1
 
@@ -108,4 +108,4 @@ while run:
         start = 0
     elif start == 0:
         dialogs('Кот, твой ход', dialog_dog_pos, OUTSIZE_BG, '')
-        strat = None
+        start = None
